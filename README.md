@@ -11,4 +11,3 @@ Email Dr. Miller:
 
 (4) What previous computational work has been done on this project, if any? 
 
-	[COMP 383_483 Milestones - Sheet1.pdf](https://github.com/lladney/COMP483-Group-Project/files/11006240/COMP.383_483.Milestones.-.Sheet1.pdf)
