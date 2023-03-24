@@ -1,0 +1,26 @@
+OVERVIEW
+A high-level summary that your classmates, and more importantly, your client (faculty member), should understand. It should be no more than 3 paragraphs.
+We are aiming to design an amino acid composition tool for viral proteomes, which will calculate amino acid compositions (AAC) of various viral proteome input sequences and run comparisons between them. Ultimately, we hope to produce a machine learning model that can predict possible mutations in viral variants based on patterns in amino acid composition. The amino acid composition of proteomes can be used to predict structural properties of the produced proteins, such as folding under particular environmental conditions (i.e., the host the virus infects), as well as the rate at which the virus mutates and evolves into new potentially dangerous strains that continue to infect humans and evade vaccines. Prediction of future mutations in viral variants is helpful in development of therapeutics/drugs to treat viral infections, as well as in the implementation of preventative measures prior to infection.
+We will be using proteomes obtained from all SARS-CoV-2 Omicron variants as test data, which will be obtained from NCBI, GISAID, and NextStrain. Currently, we are considering comparison of test data between different databases to determine if using input data from one of three listed databases is ideal based on maximized data availability. 
+Previously, the development of machine learning algorithms for the creation of models to predict protein structure fom amino acid compositions has been done, though this is not comprehensive for our purposes—we hope to add to previous algorithms in the creation of our own pipeline to extract data about amino acid composition of our viral protein sequences, and fit these sequences to known statistical models, such as Benford’s law, to determine patterns in AAC in viruses. 
+
+CONTEXT
+A description of the problem at hand, why this project is necessary and what people need to know to assess this project.
+
+GOALS & NON-GOALS
+Goals should:
+•	describe how the user will benefit from your project 
+•	specify how you will measure success
+Non-Goals are equally important to describe which problems you won’t be fixing so everyone is on the same page.
+
+PROPOSED SOLUTION
+Walk through a user experience to formalize your solution. Feel free to include many sub-sections and diagrams. Diagrams can include hand-drawn pics you take a photo of with your phone. This doesn’t have to be fancy. Flowchart symbols may be useful, but not required. Provide a big picture first, then fill in lots of details. Aim for a world where you can write this, then take a vacation off the grid, and another member of the team can just read it and implement the solution as you described.This section will vary based upon the type of solution you are developing. For instance, database development would include lists of tables and data stored. A web interface would focus on the page(s) to be developed and walk-through a ‘typical’ user (use case). For analysis pipelines, walk through the steps of the analysis; existing tools used must be listed with their dependencies and careful attention must be paid to inputs/outputs of existing tools. Tasks should be ranked in order of their importance. This will help you set your milestones and determine what tasks should be tackled first.
+
+MILESTONES
+Week 1 (3/24): Retrieving Fasta files and download amino acid sequences of the virus from GenBank or GISAID. and downloading necessary tools.
+Week 2 (3/31): Data pre-processing (removing lines that do not contain AA residues, stripping newlines and whitespaces, cleaning data as needed)
+Week 3 (4/7): Determine AA frequencies for each sample
+Week 4 (4/14): Correlation analysis between AACs and proteome variants
+Week 5 (4/21): Test for normality Shapiro-Wilk test, skewness, kurtosis
+Week 6 (4/28): Validate correlation analysis using WebPRANK (aligns proteome sequences); Work on final presentation slides
+Week 7 (5/5): Finalize project code and final app note
