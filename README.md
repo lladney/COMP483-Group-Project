@@ -11,8 +11,6 @@ Email Dr. Miller:
 
 (4) What previous computational work has been done on this project, if any? 
 
-![2023-03-17](https://user-images.githubusercontent.com/48781009/226050930-f2ea5c6d-917a-40fa-af06-204358f45da4.png)
-
 Links:
 - https://covariants.org/variants/21L.Omicron
 - https://www.ncbi.nlm.nih.gov/gene - RefSeq for 11 Omicron sars-cov 2 genomes
