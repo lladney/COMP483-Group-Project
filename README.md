@@ -15,3 +15,4 @@ Email Dr. Miller:
 
 Links:
 - https://covariants.org/variants/21L.Omicron
+- https://www.ncbi.nlm.nih.gov/gene - RefSeq for 11 Omicron sars-cov 2 genomes
