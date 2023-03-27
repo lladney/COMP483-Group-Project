@@ -18,6 +18,3 @@ Links:
 
 SARS-CoV-2 Proteomes from Omicron Variants (9)
 <img width="872" alt="Screen Shot 2023-03-24 at 5 00 33 PM" src="https://user-images.githubusercontent.com/125703033/227651451-e03a6295-3a8c-4f9e-b9b1-4f5002cbcc7d.png">
-
-Token
-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
