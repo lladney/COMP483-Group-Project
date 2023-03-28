@@ -1,0 +1,21 @@
+# Load required libraries
+library(tidyverse)
+
+# Set input and output file paths
+input_file <- "C:/Users/param/Downloads/sars-cov2_amino_acid_frequencies-prot1.csv"
+output_file <- "C:/Users/param/Downloads/sars-cov2_amino_acid_frequencies-prot1.png"
+
+# Read amino acid frequencies from CSV file
+aa_freqs <- read.csv(input_file, header=TRUE)
+
+# Plot amino acid frequencies using ggplot2
+ggplot(aa_freqs, aes(x=Amino.Acid, y=Frequency, fill=Amino.Acid)) +
+  geom_bar(stat="identity") +
+  ggtitle("Amino Acid Frequencies in SARS-CoV-2 Proteins") +
+  xlab("Amino Acid") +
+  ylab("Frequency") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5), legend.position = "none")
+
+# Save plot to PNG file
+ggsave(output_file, width=10, height=6, dpi=300)
