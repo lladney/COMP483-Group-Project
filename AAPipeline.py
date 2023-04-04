@@ -1,5 +1,6 @@
 import sys
 import csv
+import numpy as np
 from Bio import SeqIO
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 import matplotlib.pyplot as plt
@@ -8,6 +9,8 @@ import seaborn as sns
 # Define input and output files
 input_file = "C:/Users/param/Downloads/sars-cov-2-prot1.txt"
 output_file = "C:/Users/param/Downloads/sars-cov2_amino_acid_frequencies-prot1.csv"
+matrix_output_file = "C:/Users/param/Downloads/matrix_out.png"
+matrix_values_file = "C:/Users/param/Downloads/matrix_values.csv"
 
 # Define function to extract amino acid sequences from a FASTA file
 def extract_amino_acids(input_file):
@@ -60,4 +63,28 @@ plt.xlabel("Amino Acid")
 plt.ylabel("Frequency")
 plt.text(-0.6, min_percent-0.005, f"Min: {min_percent:.2%}")
 plt.text(19.2, max_percent-0.005, f"Max: {max_percent:.2%}")
+
+# Create a matrix of amino acid frequencies
+index_table = np.zeros((len(total_aa_freqs), len(amino_acids)))
+aa_indices = {aa: i for i, aa in enumerate(total_aa_freqs)}
+for aa_freq in amino_acids:
+    for aa, freq in aa_freq.items():
+        index_table[aa_indices[aa],] += freq
+
+# Write matrix values to output file
+with open(matrix_values_file, "w", newline="") as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["Amino Acid"] + list(range(1, len(amino_acids)+1)))
+    for aa, row in zip(total_aa_freqs.keys(), index_table):
+        writer.writerow([aa] + list(row))
+
+# Plot amino acid frequency matrix using seaborn
+plt.figure(figsize=(10, 8))
+sns.heatmap(index_table, cmap="Reds", xticklabels=list(range(1, len(amino_acids)+1)), yticklabels=list(total_aa_freqs.keys()))
+plt.title("Amino Acid Frequency Matrix in SARS-CoV-2 Proteins")
+plt.xlabel("Protein Sequence Position")
+plt.ylabel("Amino Acid")
+plt.savefig(matrix_output_file)
+
 plt.show()
+
