@@ -7,17 +7,26 @@ from Bio.SeqUtils.ProtParam import ProteinAnalysis
 import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy.stats
+import requests
+import re
 
 # Define input and output files
-input_file = "C:/Users/param/Downloads/sars-cov-2-prot1.txt"
-# Replace input_file line when bugs fixed:
-# input_file = open('proteins.txt', 'w')  # open and write sequences to proteins text file 
+#input_file = "C:/Users/param/Downloads/sars-cov-2-prot1.txt"
+input_file = open('proteins.txt', 'w')  # open and write sequences to proteins text file 
 output_file = "C:/Users/param/Downloads/sars-cov2_amino_acid_frequencies-prot1.csv"
 matrix_output_file = "C:/Users/param/Downloads/matrix_out.png"
 matrix_values_file = "C:/Users/param/Downloads/matrix_values.csv"
 
-'''
 # Protein sequence retrieval from NCBI
+print("Analysis of protein sequences will be performed on search results from uniprot.org.")
+url = input("Please enter URL of search results: ")     # user prompted to enter protein sequence ID
+all_fastas = requests.get(url).text
+fasta_list = re.split(r'\n(?=>)', all_fastas)
+[fasta for fasta in fasta_list if '>' in fasta]
+fastas = '\n'.join(fasta_list)
+input_file.write(fastas)
+'''
+# CODE TO RETRIEVE SINGLE PROTEIN SEQUENCE FROM NCBI
 Entrez.email = input("Enter email: ")   # user prompted to enter email (tell NCBI who you are to access sequences)
 seqID = input("Enter protein ID: ")     # user prompted to enter protein sequence ID
 handle = Entrez.efetch(db="protein", id=seqID, rettype="gb", retmode="fasta") # handle to fetch protein sequence (user input)
@@ -57,10 +66,8 @@ def write_csv(output_file, data):
 # Extract amino acid sequences from input file
 amino_acids = extract_amino_acids(input_file)
 
-'''
 # Close input file
 input_file.close()                     
-'''
 
 # Calculate total frequencies of each amino acid
 total_aa_freqs = {}
@@ -111,4 +118,3 @@ plt.ylabel("Amino Acid")
 plt.savefig(matrix_output_file)
 
 plt.show()
-
