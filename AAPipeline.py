@@ -2,6 +2,7 @@ import sys
 import csv
 import numpy as np
 from Bio import SeqIO
+from Bio import Entrez
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 import matplotlib.pyplot as plt
 import seaborn as sns
