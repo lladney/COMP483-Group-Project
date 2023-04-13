@@ -9,9 +9,21 @@ import seaborn as sns
 
 # Define input and output files
 input_file = "C:/Users/param/Downloads/sars-cov-2-prot1.txt"
+# Replace input_file line when bugs fixed:
+# input_file = open('proteins.txt', 'w')  # open and write sequences to proteins text file 
 output_file = "C:/Users/param/Downloads/sars-cov2_amino_acid_frequencies-prot1.csv"
 matrix_output_file = "C:/Users/param/Downloads/matrix_out.png"
 matrix_values_file = "C:/Users/param/Downloads/matrix_values.csv"
+
+'''
+# Protein sequence retrieval from NCBI
+Entrez.email = input("Enter email: ")   # user prompted to enter email (tell NCBI who you are to access sequences)
+seqID = input("Enter protein ID: ")     # user prompted to enter protein sequence ID
+handle = Entrez.efetch(db="protein", id=seqID, rettype="gb", retmode="fasta") # handle to fetch protein sequence (user input)
+record = SeqIO.read(handle, "genbank")  # use SeqIO parser to read handle (in genbank format)
+sequence = str(record.seq)              # save sequence from record as a string
+input_file.write(sequence)              # write protein sequence to input file
+'''
 
 # Define function to extract amino acid sequences from a FASTA file
 def extract_amino_acids(input_file):
