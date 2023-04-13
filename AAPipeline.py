@@ -6,6 +6,7 @@ from Bio import Entrez
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 import matplotlib.pyplot as plt
 import seaborn as sns
+import scipy.stats
 
 # Define input and output files
 input_file = "C:/Users/param/Downloads/sars-cov-2-prot1.txt"
@@ -24,6 +25,11 @@ record = SeqIO.read(handle, "genbank")  # use SeqIO parser to read handle (in ge
 sequence = str(record.seq)              # save sequence from record as a string
 input_file.write(sequence)              # write protein sequence to input file
 '''
+
+# need to write to outfile:
+# amino acids with the same/most similar frequency across the variants (least likely to mutate)
+# amino acids with larges ranges of frequencies across the variants (most likely to mutate)
+# table containing shapiro wilk test, skewness, kurtosis
 
 # Define function to extract amino acid sequences from a FASTA file
 def extract_amino_acids(input_file):
