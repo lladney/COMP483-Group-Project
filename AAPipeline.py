@@ -51,6 +51,11 @@ def write_csv(output_file, data):
 # Extract amino acid sequences from input file
 amino_acids = extract_amino_acids(input_file)
 
+'''
+# Close input file
+input_file.close()                     
+'''
+
 # Calculate total frequencies of each amino acid
 total_aa_freqs = {}
 for aa in amino_acids:
