@@ -9,6 +9,8 @@ import seaborn as sns
 import scipy.stats
 import requests
 import re
+from datetime import date
+today = date.today()
 
 # Define input and output files
 #input_file = "C:/Users/param/Downloads/sars-cov-2-prot1.txt"
@@ -25,15 +27,27 @@ Entrez.email = input("Enter email: ")   # user prompted to enter email (tell NCB
 protTerm = input("Enter NCBI search term: ")     # user prompted to enter protein sequence ID
 numSeqs = input("How many protein sequences would you like to extract?") # user prompted to enter # seqs
 
-searchResultHandle = Entrez.esearch(db = "protein", term = protTerm, retmax = numSeqs)
+print("Default date range for protein sequence extraction is from 01/01/2000 - Current.")
+print("Would you like to extract protein sequences from a specified date range?")
+dateY_N = input("Enter (Y/N): ")
+startDate = ""
+endDate = ""
+if dateY_N == "N" or "n":
+    startDate == "2000/01/01" and endDate == today.strftime("%d/%m/%Y")
+if dateY_N == "Y" or "y":
+    startDate == input("Using format YYYY/MM/DD, enter start date: ")
+    endDate == input("Using format YYYY/MM/DD, enter end date: ")
+
+searchResultHandle = Entrez.esearch(db = "protein", term = protTerm, retmax = numSeqs, mindate = startDate, maxdate = endDate)
 searchResult = Entrez.read(searchResultHandle)
 ids = searchResult["IdList"]
 
 handle = Entrez.efetch(db="protein", id=ids, rettype="fasta", retmode="text")
 record = handle.read()
 
+input_file = open('proteinSearch.txt', 'w')
 input_file.write(record.rstrip('\n'))
-input_file.close()  
+input_file.close()
 
 '''
 # CODE TO RETREVE PROTEIN SEQUENCES BASED ON URL
