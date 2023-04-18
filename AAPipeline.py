@@ -12,12 +12,31 @@ import re
 
 # Define input and output files
 #input_file = "C:/Users/param/Downloads/sars-cov-2-prot1.txt"
-input_file = open('proteins.txt', 'w')  # open and write sequences to proteins text file 
-output_file = "C:/Users/param/Downloads/sars-cov2_amino_acid_frequencies-prot1.csv"
-matrix_output_file = "C:/Users/param/Downloads/matrix_out.png"
-matrix_values_file = "C:/Users/param/Downloads/matrix_values.csv"
+input_file = open('proteinSearch.txt', 'w')  # open and write sequences to proteins text file 
+output_file = "/Users/laraladney/Documents/sars-cov2_amino_acid_frequencies-prot1.csv"
+matrix_output_file = "/Users/laraladney/Downloads/matrix_out.png"
+matrix_values_file = "/Users/laraladney/Downloads/matrix_values.csv"
+#matrix_output_file = "C:/Users/param/Downloads/matrix_out.png"
+#matrix_values_file = "C:/Users/param/Downloads/matrix_values.csv"
 
-# Protein sequence retrieval from NCBI
+# Protein Sequence Retrieval from NCBI based on search term
+Entrez.email = input("Enter email: ")   # user prompted to enter email (tell NCBI who you are to access sequences)
+
+protTerm = input("Enter NCBI search term: ")     # user prompted to enter protein sequence ID
+numSeqs = input("How many protein sequences would you like to extract?") # user prompted to enter # seqs
+
+searchResultHandle = Entrez.esearch(db = "protein", term = protTerm, retmax = numSeqs)
+searchResult = Entrez.read(searchResultHandle)
+ids = searchResult["IdList"]
+
+handle = Entrez.efetch(db="protein", id=ids, rettype="fasta", retmode="text")
+record = handle.read()
+
+input_file.write(record.rstrip('\n'))
+input_file.close()  
+
+'''
+# CODE TO RETREVE PROTEIN SEQUENCES BASED ON URL
 print("Analysis of protein sequences will be performed on search results from uniprot.org.")
 url = input("Please enter URL of search results: ")     # user prompted to enter protein sequence ID
 all_fastas = requests.get(url).text
@@ -25,7 +44,7 @@ fasta_list = re.split(r'\n(?=>)', all_fastas)
 [fasta for fasta in fasta_list if '>' in fasta]
 fastas = '\n'.join(fasta_list)
 input_file.write(fastas)
-'''
+
 # CODE TO RETRIEVE SINGLE PROTEIN SEQUENCE FROM NCBI
 Entrez.email = input("Enter email: ")   # user prompted to enter email (tell NCBI who you are to access sequences)
 seqID = input("Enter protein ID: ")     # user prompted to enter protein sequence ID
@@ -39,6 +58,8 @@ input_file.write(sequence)              # write protein sequence to input file
 # amino acids with the same/most similar frequency across the variants (least likely to mutate)
 # amino acids with larges ranges of frequencies across the variants (most likely to mutate)
 # table containing shapiro wilk test, skewness, kurtosis
+
+input_file = open('proteinSearch.txt', 'r')
 
 # Define function to extract amino acid sequences from a FASTA file
 def extract_amino_acids(input_file):
