@@ -16,12 +16,20 @@ SARS-CoV-2 Proteomes from Omicron Variants (9)
 Dependencies: 
 
 sys: a built-in module in Python, so no installation is necessary.
+
 csv: a built-in module in Python, so no installation is necessary.
+
 numpy: can be installed using pip (a package manager for Python) by running pip install numpy in the command line.
+
 Biopython: can be installed using pip by running pip install biopython in the command line.
+
 matplotlib: can be installed using pip by running pip install matplotlib in the command line.
+
 seaborn: can be installed using pip by running pip install seaborn in the command line.
+
 scipy: can be installed using pip by running pip install scipy in the command line.
+
 re: a built-in module in Python, so no installation is necessary.
+
 datetime: a built-in module in Python, so no installation is necessary.
 
