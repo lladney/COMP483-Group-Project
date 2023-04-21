@@ -1,12 +1,6 @@
 # COMP483-Group-Project 
 https://github.com/biopython/biopython/blob/master/Bio/SeqUtils/ProtParam.py
 
-Links:
-- https://covariants.org/variants/21L.Omicron
-- https://www.ncbi.nlm.nih.gov/gene - RefSeq for 11 Omicron sars-cov 2 genomes
-- https://protfasta.readthedocs.io/en/latest/read_fasta.html (remove invalid sequences from FASTA)
-- https://github.com/Wytamma/GISAIDR (retrieve files from GISAID)
-- https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2?from=266&to=21555&report=fasta
 
 
 SARS-CoV-2 Proteomes from Omicron Variants (9)
@@ -33,3 +27,9 @@ re: a built-in module in Python, so no installation is necessary.
 
 datetime: a built-in module in Python, so no installation is necessary.
 
+Useful Links:
+- https://covariants.org/variants/21L.Omicron
+- https://www.ncbi.nlm.nih.gov/gene - RefSeq for 11 Omicron sars-cov 2 genomes
+- https://protfasta.readthedocs.io/en/latest/read_fasta.html (remove invalid sequences from FASTA)
+- https://github.com/Wytamma/GISAIDR (retrieve files from GISAID)
+- https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2?from=266&to=21555&report=fasta
