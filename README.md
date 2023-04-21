@@ -3,16 +3,8 @@
 ## Functionality
 A Python pipeline to query NCBI with a user-input search information and statistically process the retrieved protein FASTA files. The pipeline provides a user interface to NCBI to pull FASTA sequences by asking the user for what they want to pull. The resulting FASTA sequences are stored in an input file, which is then used to conduct statistical analyses. Amino acid percentages are calculated individually for all FASTA sequences. Average amino acid percentages are calculated between all protein sequences and displayed in a table in an output csv file. These percentages are sorted by rank, so the user can request an amino acid at a specific rank (i.e, most frequent, or 7th most frequent amino acids). Amino acid frequencies are displayed on a barplot, with minimum and maximum frequencies displayed clearly.
 
-Input
-- user input (a search term, number of protein sequences, and an optional date range) to retrieve NCBI protein FASTA sequences
-
-Output:
-- csv file containing average amino acid prevalence across the protein sequences
-- barplots displaying AAC, with labeled minimum and maximum frequencies.
-
 
 ## Dependencies: 
-
 Built-in Python modules to import:
 
 - sys (manipulates Python runtime environment)
@@ -36,6 +28,35 @@ pip install seaborn
 pip install scipy
 ```
 
+
+## Inputs
+The only file needed to execute this code is AAPipeline.py. Once the .py file has been downloaded and the user runs the module, the user will be prompted to enter several inputs:
+  a.  Enter email: 
+      - The user is asked to enter an email address to identify themselves to NCBI in order to access protein sequences from the database.
+  
+  b.  Enter NCBI search term:
+      - The user is asked to enter the NCBI search term corresponding to the proteins they want to extract. The NCBI database for protein sequence extraction is set to NCBI's Protein database. The user may enter a search term as general as the disease name, or they can list out multiple parameters corresponding to the protein sequences they want to extract, which include but are not limited to: author, accession number, assembly, bioproject, cultivar, division, EC/RN number, feature key, gene name, isolate, journal, organism, strain, exc. A link to NCBI's Protein Advanced Search Builder is included below if the user wants to look at all available search filters:
+      https://www.ncbi.nlm.nih.gov/protein
+ 
+  c.  How many protein sequences would you like to extract?
+      - The user is asked to enter the number of protein sequences they would like to pull FASTA records for. The first (user-entered integer)  protein sequences will be extracted in FASTA form when the user-specified NCBI search term is executed. 
+  
+  d.  Would you like to extract protein sequences from a specified date range? Enter (Y/N):
+      - The user can either enter Y (Yes) to extract protein sequences from a specified date range, which will result in further prompting to enter a start date and end date in the form YYYY/MM/DD, or N (No) if they want to work with the default date range, where the start date is set to 2000/01/01 and the end date is set to the current date.
+
+
+## Outputs
+Two files will be outputted once the AAPipeline.py code has been executed:
+  1. amino_acid_frequencies.csv
+    - Displays amino acids and corresponding frequencies, averaged across all queried FASTA sequences. The "Rank" column corresponds to the nth most frequent amino acid across sequences. For example, an amino acid with Rank = 4 is the 4th most common amino acid across all queried FASTA sequences.
+
+  2. Figure 1
+    - Amino acids are displayed on a barplot with average frequencies across all queried FASTA sequences. Percentages for minimum and maximum amino acids are displayed.
+
+  3. proteinSearch.txt
+    - This text file contains the protein sequences obtained from NCBI using the user-specified parameters in FASTA form. 
+
+
 ## Test Data
 Can be found in "Sequences" folder
 SARS-CoV-2 Proteomes from Omicron Variants (9)
@@ -45,3 +66,6 @@ Useful Links:
 - https://covariants.org/variants/21L.Omicron
 - https://www.ncbi.nlm.nih.gov/gene - RefSeq for 11 Omicron sars-cov 2 genomes
 - https://protfasta.readthedocs.io/en/latest/read_fasta.html (remove invalid sequences from FASTA)
+- https://github.com/Wytamma/GISAIDR (retrieve files from GISAID)
+- https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2?from=266&to=21555&report=fasta
+- https://github.com/biopython/biopython/blob/master/Bio/SeqUtils/ProtParam.py
