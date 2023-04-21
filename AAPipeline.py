@@ -104,8 +104,8 @@ for k, v in total_aa_freqs.items():
 total_aa_freqs_sorted = dict(sorted(total_aa_freqs.items(), key = lambda item: item[1], reverse = True))
             
 # Calculate Min/Max %'s of Frequencies
-#min_percent = min(total_aa_freqs.values())
-#max_percent = max(total_aa_freqs.values())
+min_percent = min(total_aa_freqs.values())
+max_percent = max(total_aa_freqs.values())
 
 # Write amino acid frequencies to output file
 write_csv(output_file, total_aa_freqs_sorted)
