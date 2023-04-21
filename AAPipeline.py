@@ -55,14 +55,6 @@ record = SeqIO.read(handle, "genbank")  # use SeqIO parser to read handle (in ge
 sequence = str(record.seq)              # save sequence from record as a string
 input_file.write(sequence)              # write protein sequence to input file
 '''
-
-
-
-# need to write to outfile:
-# amino acids with the same/most similar frequency across the variants (least likely to mutate)
-# amino acids with larges ranges of frequencies across the variants (most likely to mutate)
-# table containing shapiro wilk test, skewness, kurtosis
-
 input_file = open('proteinSearch.txt', 'r')
 
 # Define function to extract amino acid sequences from a FASTA file
