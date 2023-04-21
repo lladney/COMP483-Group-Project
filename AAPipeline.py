@@ -104,6 +104,8 @@ for aa in amino_acids:
             total_aa_freqs[k] = v
 for k, v in total_aa_freqs.items():
     total_aa_freqs[k] = v/int(numSeqs)
+    
+total_aa_freqs_sorted = dict(sorted(total_aa_freqs.items(), key = lambda item: item[1], reverse = True))
             
 # Calculate Min/Max %'s of Frequencies
 min_percent = min(total_aa_freqs.values())
