@@ -73,9 +73,6 @@ def extract_amino_acids(input_file):
         protein = ProteinAnalysis(sequence)
         aa_percentages = protein.get_amino_acids_percent()
         aa_freqs = {}
-#        for aa, percentage in aa_percentages.items():
-#            aa_freqs[aa] = percentage / 100
-#        amino_acids.append(aa_freqs)
     return amino_acids
 
 # Define function to write amino acid frequencies and min/max percentages to a CSV file
