@@ -49,16 +49,7 @@ input_file.write(record.rstrip('\n'))
 input_file.close()
 
 '''
-# CODE TO RETREVE PROTEIN SEQUENCES BASED ON URL
-print("Analysis of protein sequences will be performed on search results from uniprot.org.")
-url = input("Please enter URL of search results: ")     # user prompted to enter protein sequence ID
-all_fastas = requests.get(url).text
-fasta_list = re.split(r'\n(?=>)', all_fastas)
-[fasta for fasta in fasta_list if '>' in fasta]
-fastas = '\n'.join(fasta_list)
-input_file.write(fastas)
-
-# CODE TO RETRIEVE SINGLE PROTEIN SEQUENCE FROM NCBI
+# CODE TO RETRIEVE SINGLE PROTEIN SEQUENCE FROM NCBI USING PROTEIN ID
 Entrez.email = input("Enter email: ")   # user prompted to enter email (tell NCBI who you are to access sequences)
 seqID = input("Enter protein ID: ")     # user prompted to enter protein sequence ID
 handle = Entrez.efetch(db="protein", id=seqID, rettype="gb", retmode="fasta") # handle to fetch protein sequence (user input)
