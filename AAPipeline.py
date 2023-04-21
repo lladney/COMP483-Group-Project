@@ -112,7 +112,7 @@ min_percent = min(total_aa_freqs.values())
 max_percent = max(total_aa_freqs.values())
 
 # Write amino acid frequencies to output file
-write_csv(output_file, total_aa_freqs)
+write_csv(output_file, total_aa_freqs_sorted)
 
 # Plot amino acid frequencies using seaborn
 sns.set_style("whitegrid")
