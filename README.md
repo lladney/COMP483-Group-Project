@@ -31,7 +31,7 @@ pip install scipy
 
 ## Inputs
 The only file needed to execute this code is AAPipeline.py. Once the .py file has been downloaded and the user runs the module, the user will be prompted to enter several inputs:
-***a.  Enter email: 
+***a.  Enter email:*** 
 
 The user is asked to enter an email address to identify themselves to NCBI in order to access protein sequences from the database.
   
