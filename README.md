@@ -45,6 +45,3 @@ Useful Links:
 - https://covariants.org/variants/21L.Omicron
 - https://www.ncbi.nlm.nih.gov/gene - RefSeq for 11 Omicron sars-cov 2 genomes
 - https://protfasta.readthedocs.io/en/latest/read_fasta.html (remove invalid sequences from FASTA)
-- https://github.com/Wytamma/GISAIDR (retrieve files from GISAID)
-- https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2?from=266&to=21555&report=fasta
-- https://github.com/biopython/biopython/blob/master/Bio/SeqUtils/ProtParam.py
