@@ -4,18 +4,18 @@
 
 Built-in Python modules to import:
 
-sys (manipulates Python runtime environment)
-csv (reads and writes to csv files)
-re
-datetime (imports current date)
+- sys (manipulates Python runtime environment)
+- csv (reads and writes to csv files)
+- re
+- datetime (imports current date)
 
 Can be installed using pip in the command line:
 
-numpy (mathematically alters arrays)
-biopython (parses FASTA files and queries NCBI)
-matplotlib (creates 2D graphs and plots)
-seaborn (creates statistical graphics)
-scipy (computes statistics)
+- numpy (mathematically alters arrays)
+- biopython (parses FASTA files and queries NCBI)
+- matplotlib (creates 2D graphs and plots)
+- seaborn (creates statistical graphics)
+- scipy (computes statistics)
 
 ```
 pip install numpy
