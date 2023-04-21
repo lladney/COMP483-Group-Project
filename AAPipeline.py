@@ -78,11 +78,11 @@ def extract_amino_acids(input_file):
 def write_csv(output_file, data):
     with open(output_file, "w", newline="") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Amino Acid", "Frequency", "Min %", "Max %"])
+        writer.writerow(["Rank", "Amino Acid", "Frequency"])
+        rank = 1 
         for aa, freq in data.items():
-            min_freq = min(amino_acids, key=lambda x: x[aa])[aa]
-            max_freq = max(amino_acids, key=lambda x: x[aa])[aa]
-            writer.writerow([aa, freq, min_freq, max_freq])
+            writer.writerow([rank, aa, freq])
+            rank += 1
 
 # Extract amino acid sequences from input file
 amino_acids = extract_amino_acids(input_file)
