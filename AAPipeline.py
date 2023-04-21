@@ -15,8 +15,6 @@ today = date.today()
 #input_file = "C:/Users/param/Downloads/sars-cov-2-prot1.txt"
 input_file = open('proteinSearch.txt', 'w')  # open and write sequences to proteins text file 
 output_file = "/Users/laraladney/Documents/sars-cov2_amino_acid_frequencies-prot1.csv"
-#matrix_output_file = "/Users/laraladney/Downloads/matrix_out.png"
-#matrix_values_file = "/Users/laraladney/Downloads/matrix_values.csv"
 #matrix_output_file = "C:/Users/param/Downloads/matrix_out.png"
 #matrix_values_file = "C:/Users/param/Downloads/matrix_values.csv"
 
