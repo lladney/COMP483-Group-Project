@@ -122,6 +122,18 @@ def write_csv2(output_file2, data):
         for aa, freq in data.items():
             writer.writerow(["", aa, freq])
 
+aa_outfile = open("test.out.csv", "w", newline="")
+writer = csv.writer(aa_outfile, delimiter=",")
+
+header = ["Protein ID"] + list(amino_acids[0].keys())
+writer.writerow(header)
+
+for aa_dict in amino_acids:
+    row = [aa_dict.get("id")] + list(aa_dict.values())
+    writer.writerow(row)
+
+aa_outfile.close()
+'''
 aa_outfile = open("test.out.txt", "a")
 
 for dictt in amino_acids:
@@ -132,9 +144,10 @@ for dictt in amino_acids:
     print(aalist2)
     outstring="\t".join(aalist2)
     aa_outfile.write(outstring + "\n")
-    #write_csv2(output_file2, dictt)
+    write_csv2(output_file2, amino_acids)
     
 aa_outfile.close()
+'''
 '''
 # Plot amino acid frequencies using seaborn
 sns.set_style("whitegrid")
