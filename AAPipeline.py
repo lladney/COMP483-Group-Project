@@ -26,12 +26,14 @@ numSeqs = input("How many protein sequences would you like to extract? ") # user
 
 print("Default date range for protein sequence extraction is from 01/01/2000 - Current.")
 print("Would you like to extract protein sequences from a specified date range?")
-dateY_N = input("Enter (Y/N): ")
-startDate = ""
-endDate = ""
-if dateY_N == "N" or "n":
-    startDate == "2000/01/01" and endDate == today.strftime("%d/%m/%Y")
-if dateY_N == "Y" or "y":
+startDate = "2000/01/01"
+endDate = today.strftime("%d/%m/%Y")
+dateY_N = ""
+while dateY_N != "N" and dateY_N != "n" and dateY_N != "Y" and dateY_N != "y":
+    dateY_N = input("Enter (Y/N): ")
+    if dateY_N != "N" and dateY_N != "n" and dateY_N != "Y" and dateY_N != "y":
+        print("Please choose yes (Y) or no (N).")
+if dateY_N == "Y" or "y" and dateY_N != "N" and dateY_N != "n":
     startDate == input("Using format YYYY/MM/DD, enter start date: ")
     endDate == input("Using format YYYY/MM/DD, enter end date: ")
 
