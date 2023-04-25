@@ -19,7 +19,7 @@ output_file = "/Users/param/Downloads/sars-cov2_amino_acid_frequencies-prot1.csv
 output_file2 = "/Users/param/Downloads/aa_freqs_per_prot.csv"
 
 # Protein Sequence Retrieval from NCBI based on search term
-Entrez.email = "lladney@luc.edu" # user prompted to enter email (tell NCBI who you are to access sequences)
+Entrez.email = "wmccain@luc.edu" # user prompted to enter email (tell NCBI who you are to access sequences)
 
 protTerm = "sars cov 2" # user prompted to enter protein sequence ID
 numSeqs = 10 # user prompted to enter # seqs
@@ -55,7 +55,9 @@ def extract_amino_acids(input_file):
         else:
             protein_id = record.id
         sequence = str(record.seq)
-        amino_acids.append((protein_id, sequence))
+        protein = ProteinAnalysis(sequence)
+        aa_percentages = protein.get_amino_acids_percent()
+        amino_acids.append((protein_id, sequence, aa_percentages))
     return amino_acids
 
 # Define function to write amino acid frequencies and min/max percentages to a CSV file
@@ -106,17 +108,17 @@ def write_csv2(output_file2, data):
     with open(output_file2, "w", newline="") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["Protein ID", "Amino Acid", "Frequency"])
-        for protein_id, aa in data:
-            for aa_name, freq in aa.items():
-                writer.writerow([protein_id, aa, freq])
+        #for protein_id, aa in data:
+        for protein_id, aa, freq in data.items():
+            writer.writerow([protein_id, aa, freq])
 
 aa_outfile = open("test.out2.csv", "w", newline="")
 writer = csv.writer(aa_outfile, delimiter=",")
 
 header = ["Protein ID"]
-if isinstance(amino_acids[0][1], dict):
-    header += list(amino_acids[0][1].keys())
-writer.writerow(header)
+if isinstance(amino_acids[0], dict):
+    header += list(amino_acids[0].keys())
+    writer.writerow(header)
 
 for aa_dict in amino_acids:
     row = [aa_dict[0]]
