@@ -30,7 +30,7 @@ pip install scipy
 
 
 ## Inputs
-The only file needed to execute this code is AAPipeline.py. Once the .py file has been downloaded and the user runs the module, the user will be prompted to enter several inputs:
+The only file needed to execute this code is **AAPipeline.py**. Once the .py file has been downloaded and the user runs the module, the user will be prompted to enter several inputs:
 
 **a.  _Enter email:_**
 
