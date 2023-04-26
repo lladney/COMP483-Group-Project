@@ -53,15 +53,15 @@ The user can either enter Y (Yes) to extract protein sequences from a specified 
 ## Outputs
 Two files will be outputted once the AAPipeline.py code has been executed:
 
-***1. average_amino_acid_frequencies.csv
+**1. average_amino_acid_frequencies.csv**
 
 Displays amino acids and corresponding frequencies, averaged across all queried FASTA sequences. The "Rank" column corresponds to the nth most frequent amino acid across sequences. For example, an amino acid with Rank = 4 is the 4th most common amino acid across all queried FASTA sequences.
 
-***2. Figure 1
+**2. Figure 1**
 
 Amino acids are displayed on a barplot with average frequencies across all queried FASTA sequences. Percentages for minimum and maximum amino acids are displayed.
 
-***3. proteinSearch.txt
+**3. proteinSearch.txt**
 
 This text file contains the protein sequences obtained from NCBI using the user-specified parameters in FASTA form. 
 
@@ -72,9 +72,5 @@ SARS-CoV-2 Proteomes from Omicron Variants (9)
 <img width="872" alt="Screen Shot 2023-03-24 at 5 00 33 PM" src="https://user-images.githubusercontent.com/125703033/227651451-e03a6295-3a8c-4f9e-b9b1-4f5002cbcc7d.png">
 
 Useful Links:
-- https://covariants.org/variants/21L.Omicron
-- https://www.ncbi.nlm.nih.gov/gene - RefSeq for 11 Omicron sars-cov 2 genomes
-- https://protfasta.readthedocs.io/en/latest/read_fasta.html (remove invalid sequences from FASTA)
-- https://github.com/Wytamma/GISAIDR (retrieve files from GISAID)
-- https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2?from=266&to=21555&report=fasta
-- https://github.com/biopython/biopython/blob/master/Bio/SeqUtils/ProtParam.py
+- List of Omicron variants: https://covariants.org/variants/21L.Omicron
+- Removing invalid sequences from FASTA files: https://protfasta.readthedocs.io/en/latest/read_fasta.html
