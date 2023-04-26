@@ -67,7 +67,7 @@ This text file contains the protein sequences obtained from NCBI using the user-
 
 
 ## Test Data
-Can be found in "Omicron Variant FASTAs" folder
+Can be found in "Omicron Proteome FASTAs" folder
 
 
 SARS-CoV-2 Proteomes from Omicron Variants (9)
