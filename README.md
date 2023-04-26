@@ -31,20 +31,21 @@ pip install scipy
 
 ## Inputs
 The only file needed to execute this code is AAPipeline.py. Once the .py file has been downloaded and the user runs the module, the user will be prompted to enter several inputs:
+
 **a.  _Enter email:_**
 
 The user is asked to enter an email address to identify themselves to NCBI in order to access protein sequences from the database.
   
-***b.  Enter NCBI search term:
+**b.  Enter NCBI search term:**
 
 The user is asked to enter the NCBI search term corresponding to the proteins they want to extract. The NCBI database for protein sequence extraction is set to NCBI's Protein database. The user may enter a search term as general as the disease name, or they can list out multiple parameters corresponding to the protein sequences they want to extract, which include but are not limited to: author, accession number, assembly, bioproject, cultivar, division, EC/RN number, feature key, gene name, isolate, journal, organism, strain, exc. A link to NCBI's Protein Advanced Search Builder is included below if the user wants to look at all available search filters:
       https://www.ncbi.nlm.nih.gov/protein
  
- ***c.  How many protein sequences would you like to extract?
+ **c.  How many protein sequences would you like to extract?**
 
 The user is asked to enter the number of protein sequences they would like to pull FASTA records for. The first (user-entered integer)  protein sequences will be extracted in FASTA form when the user-specified NCBI search term is executed. 
   
-***d.  Would you like to extract protein sequences from a specified date range? Enter (Y/N):
+**d.  Would you like to extract protein sequences from a specified date range? Enter (Y/N):**
 
 The user can either enter Y (Yes) to extract protein sequences from a specified date range, which will result in further prompting to enter a start date and end date in the form YYYY/MM/DD, or N (No) if they want to work with the default date range, where the start date is set to 2000/01/01 and the end date is set to the current date.
 
