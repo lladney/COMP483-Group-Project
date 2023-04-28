@@ -9,7 +9,7 @@ Built-in Python modules to import:
 
 - sys (manipulates Python runtime environment)
 - csv (reads and writes to csv files)
-- re
+- re (checks if strings match regular expressions)
 - datetime (imports current date)
 
 Can be installed using pip in the command line:
