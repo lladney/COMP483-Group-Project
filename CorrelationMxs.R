@@ -3,7 +3,7 @@ install.packages("corrplot")
 library(corrplot)
 
 # Load the csv file using the read.csv function.
-data <- read.csv("C:/Users/param/OneDrive - Loyola University Chicago/Computational Bio Comp383/complete.test.out.csv")
+data <- read.csv("complete.test.out.csv")
 
 # Create a correlation matrix using the cor function.
 corr_matrix <- cor(data[,2:21])
