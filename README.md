@@ -39,7 +39,7 @@ The user is asked to enter an email address to identify themselves to NCBI in or
 **b.  _Enter NCBI search term:_**
 
 The user is asked to enter the NCBI search term corresponding to the proteins they want to extract. The NCBI database for protein sequence extraction is set to NCBI's Protein database. The user may enter a search term as general as the disease name, or they can list out multiple parameters corresponding to the protein sequences they want to extract, which include but are not limited to: author, accession number, assembly, bioproject, cultivar, division, EC/RN number, feature key, gene name, isolate, journal, organism, strain, exc. A link to NCBI's Protein Advanced Search Builder is included below if the user wants to look at all available search filters:
-      https://www.ncbi.nlm.nih.gov/protein
+      https://www.ncbi.nlm.nih.gov/protein/advanced
  
  **c.  _How many protein sequences would you like to extract?_**
 
