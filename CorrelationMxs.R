@@ -8,6 +8,9 @@ data <- read.csv("test.out.csv")
 # Create a correlation matrix using the cor function.
 corr_matrix <- cor(data[,2:21])
 
+# Transpose the matrix 
+tranposedmatrix = t(corr_matrix)
+
 # Create the heatmap using the corrplot function.
 corrplot(corr_matrix, type = "upper", method = "color", 
          tl.col = "black", tl.srt = 45)
