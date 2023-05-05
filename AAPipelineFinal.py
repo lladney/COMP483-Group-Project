@@ -15,57 +15,56 @@ from datetime import date                               # module to pull current
                                    
 
 # Define input and output files
-input_file = open('proteinSearch.txt', 'w')  # open and write sequences to proteins text file 
-output_file = "/Users/laraladney/Documents/sars-cov2_amino_acid_frequencies-prot1.csv"
-output_file2 = "/Users/laraladney/Documents/aa_freqs_per_prot.csv"
+input_file = open('proteinSearch.txt', 'w')             # open and write sequences to proteins text file 
+output_file = "/Users/laraladney/Documents/sars-cov2_amino_acid_frequencies-prot1.csv" # path to output file 1
+output_file2 = "/Users/laraladney/Documents/aa_freqs_per_prot.csv" # path to output file 2
 
 # Protein Sequence Retrieval from NCBI based on search term
-Entrez.email = input("Enter email: ")   # user prompted to enter email (tell NCBI who you are to access sequences)
+Entrez.email = input("Enter email: ")                   # user prompted to enter email (tell NCBI who you are to access sequences)
 
-protTerm = input("Enter NCBI search term: ")     # user prompted to enter protein sequence ID
-numSeqs = input("How many protein sequences would you like to extract? ") # user prompted to enter # seqs
+protTerm = input("Enter NCBI search term: ")            # user prompted to enter protein sequence ID
+numSeqs = input("How many protein sequences would you like to extract? ") # user prompted to enter # seqs to retrieve
 
-print("Default date range for protein sequence extraction is from 01/01/2000 - Current.")
-print("Would you like to extract protein sequences from a specified date range?")
-startDate = "2000/01/01"
-today = date.today() 
-endDate = today.strftime("%d/%m/%Y")
-dateY_N = ""
-while dateY_N != "N" and dateY_N != "n" and dateY_N != "Y" and dateY_N != "y":
-    dateY_N = input("Enter (Y/N): ")
-    if dateY_N != "N" and dateY_N != "n" and dateY_N != "Y" and dateY_N != "y":
+print("Default date range for protein sequence extraction is from 01/01/2000 - Current.") 
+print("Would you like to extract protein sequences from a specified date range?") 
+startDate = "2000/01/01"                                # start date for default date range
+today = date.today()                                    # current date pulled using datetime module for end date for default date range
+endDate = today.strftime("%d/%m/%Y")                    # end date for default date range
+dateY_N = ""                                            # initialize user-specified option to opt with default date range or enter their own
+while dateY_N != "N" and dateY_N != "n" and dateY_N != "Y" and dateY_N != "y": # while loop to loop through user-entered options until "Y" (yes) or "N" (no) entered
+    dateY_N = input("Enter (Y/N): ")                    # user prompted to enter "Y" (yes) or "N" (no) in regard to setting their own date range
+    if dateY_N != "N" and dateY_N != "n" and dateY_N != "Y" and dateY_N != "y": # if the user enters a value other than "Y" or "N" they will be asked to enter one of those options
         print("Please choose yes (Y) or no (N).")
-if dateY_N == "Y" or "y" and dateY_N != "N" and dateY_N != "n":
-    startDate == input("Using format YYYY/MM/DD, enter start date: ")
-    endDate == input("Using format YYYY/MM/DD, enter end date: ")
+if dateY_N == "Y" or "y" and dateY_N != "N" and dateY_N != "n": # if the user enters "Y", then they will be prompted for further inputs
+    startDate == input("Using format YYYY/MM/DD, enter start date: ") # user prompted to enter start date
+    endDate == input("Using format YYYY/MM/DD, enter end date: ") # user prompted to enter end date
     
-searchResultHandle = Entrez.esearch(db = "protein", term = protTerm, retmax = numSeqs, idtype = "protein", datetype = "pdat", mindate = startDate, maxdate = endDate)
-searchResult = Entrez.read(searchResultHandle)
-ids = searchResult["IdList"]
+searchResultHandle = Entrez.esearch(db = "protein", term = protTerm, retmax = numSeqs, idtype = "protein", datetype = "pdat", mindate = startDate, maxdate = endDate) # entrez search handle with user-specified options
+searchResult = Entrez.read(searchResultHandle)          # read in handle with parameters set to user inputs 
+ids = searchResult["IdList"]                            # list of IDs created from protein sequences retrieved
 
-handle = Entrez.efetch(db="protein", id=ids, rettype="fasta", retmode="text")
-record = handle.read()
+handle = Entrez.efetch(db="protein", id=ids, rettype="fasta", retmode="text") # protein sequences retrieved by IDs in fasta format
+record = handle.read()                                  # record created reading in the handle containing the fasta format protein sequences           
 
-input_file = open('proteinSearch.txt', 'w')
-input_file.write(record.rstrip('\n'))
-input_file.close()
+input_file = open('proteinSearch.txt', 'w')             # input file created in write format to write protein sequences in fasta format
+input_file.write(record.rstrip('\n'))                   # each fasta format protein sequence is stripped of the new line character
+input_file.close()                                      # close the input file containing the fasta format protein sequences
 
-input_file = open('proteinSearch.txt', 'r')
+input_file = open('proteinSearch.txt', 'r')             # reopen input file but in read format
 
-protein_ids = []
+protein_ids = []                                        # make a list of protein IDs
 
 # Define function to extract amino acid sequences from a FASTA file
-def extract_amino_acids(input_file):
-    amino_acids = []
-    for record in SeqIO.parse(input_file, "fasta"):
-        sequence = str(record.seq)
-        protein = ProteinAnalysis(sequence)
-        aa_percentages = protein.get_amino_acids_percent()
-        protein_ids.append(record.id)
-        amino_acids.append(aa_percentages)
-        
-    return amino_acids
-
+def extract_amino_acids(input_file):                    # function to extract amino acids from the input file
+    amino_acids = []                                    # create a list of amino acids
+    for record in SeqIO.parse(input_file, "fasta"):     # parse through each record in the input file using the SeqIO parser to detect fasta formatted sequences
+        sequence = str(record.seq)                      # sequence from each record obtained
+        protein = ProteinAnalysis(sequence)             # protein analysis set to be performed on each individual sequence
+        aa_percentages = protein.get_amino_acids_percent() # percentages of amino acids obtained from protein sequence
+        protein_ids.append(record.id)                   # each protein ID appended to the list of protein IDs
+        amino_acids.append(aa_percentages)              # each amino acid percentage appended to list of amino acid percentages
+    return amino_acids                                  # list of amino acid percentages returned
+  
 # Define function to write amino acid frequencies and min/max percentages to a CSV file
 def write_csv(output_file, data):
     with open(output_file, "w", newline="") as csvfile:
