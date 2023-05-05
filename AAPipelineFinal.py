@@ -112,22 +112,22 @@ writer.writerow(header)                                # header written to the p
 
 # Writes amino acid frequencies
 for i in range(len(protein_ids)):                      # for loop iterates through each ID in the list of protein IDs
-    aa_dict = amino_acids[i]                           
-    aa_freqlist = list(aa_dict.values())
-    row = protein_ids[i] + "," + ",".join([str(x) for x in aa_freqlist])
-    protein_outfile.write(row + "\n")
-    writer.writerow(row)
+    aa_dict = amino_acids[i]                           # aa_dict is an itemized format of each item in the amino_acids list                      
+    aa_freqlist = list(aa_dict.values())               # list creation from values in aa_dict
+    row = protein_ids[i] + "," + ",".join([str(x) for x in aa_freqlist]) # list comprehension to write rows so that the protein ID lands in the first column, with the amino acid frequencies added to each subsequent column across each row
+    protein_outfile.write(row + "\n")                  # file formatting
+    writer.writerow(row)                               # write row to the protein.csv outfile
 
-aa_outfile.close()
-protein_outfile.close()
+aa_outfile.close()                                     # close the test.out.csv outfile
+protein_outfile.close()                                # close the protein.csv outfile
 
 # Plot amino acid frequencies using seaborn
-sns.set_style("whitegrid")
+sns.set_style("whitegrid")                            
 plt.figure(figsize=(10, 6))
 sns.barplot(x=list(total_aa_freqs.keys()), y=list(total_aa_freqs.values()), palette="Blues")
-plt.title("Amino Acid Frequencies")
-plt.xlabel("Amino Acid")
-plt.ylabel("Frequency")
-plt.text(-0.6, min_percent-0.005, f"Min: {min_percent:.2%}")
-plt.text(19.2, max_percent-0.005, f"Max: {max_percent:.2%}")
-plt.show()
+plt.title("Amino Acid Frequencies")                    # barplot title
+plt.xlabel("Amino Acid")                               # barplot x-axis
+plt.ylabel("Frequency")                                # barplot y-axis
+plt.text(-0.6, min_percent-0.005, f"Min: {min_percent:.2%}") # displays minimum average amino acid frequency
+plt.text(19.2, max_percent-0.005, f"Max: {max_percent:.2%}") # displays maximum average amino acid frequency
+plt.show()                                             # display plot to screen
