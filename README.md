@@ -41,7 +41,7 @@ R packages to import:
 
 
 ## Inputs
-The only file needed to execute this code is **AAPipeline.py**. The R code can be run after the Python code using one of the generated output files (protein.csv). Once the .py file has been downloaded and the user runs the module, the user will be prompted to enter several inputs:
+The only file needed to execute this code is **AAPipeline.py**. The R code found in **CorrelationMxs.R** can be run after the Python code using one of the generated output files (protein.csv). Once the .py file has been downloaded and the user runs the module, the user will be prompted to enter several inputs:
 
 **a.  _Enter email:_**
 
