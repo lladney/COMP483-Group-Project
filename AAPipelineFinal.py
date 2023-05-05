@@ -16,8 +16,8 @@ from datetime import date                               # module to pull current
 
 # Define input and output files
 input_file = open('proteinSearch.txt', 'w')             # open and write sequences to proteins text file 
-output_file = "/Users/laraladney/Documents/sars-cov2_amino_acid_frequencies-prot1.csv" # path to output file 1
-output_file2 = "/Users/laraladney/Documents/aa_freqs_per_prot.csv" # path to output file 2
+output_file = "/Users/laraladney/Documents/sars-cov2_amino_acid_frequencies-prot1.csv" # path to output file 1 (USER NEEDS TO CHANGE THIS)
+output_file2 = "/Users/laraladney/Documents/aa_freqs_per_prot.csv" # path to output file 2 (USER NEEDS TO CHANGE THIS)
 
 # Protein Sequence Retrieval from NCBI based on search term
 Entrez.email = input("Enter email: ")                   # user prompted to enter email (tell NCBI who you are to access sequences)
