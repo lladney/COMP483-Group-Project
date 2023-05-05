@@ -82,6 +82,8 @@ This is a matrix of amino acid frequencies that should be uploaded to R and used
 
 **5. test.out.csv**
 
+This file can be disregarded; although it has no practical use, removing it from the code induces errors.
+
 
 
 **_The following images will be outputted once the CorrelationsMx.R code has been executed:_**
