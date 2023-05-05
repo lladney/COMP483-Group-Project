@@ -38,19 +38,6 @@ if dateY_N == "Y" or "y" and dateY_N != "N" and dateY_N != "n":
     startDate == input("Using format YYYY/MM/DD, enter start date: ")
     endDate == input("Using format YYYY/MM/DD, enter end date: ")
     
-'''
-# Protein Sequence Retrieval from NCBI based on search term
-Entrez.email = "wmccain@luc.edu"   # user prompted to enter email (tell NCBI who you are to access sequences)
-
-protTerm = "sars cov 2"     # user prompted to enter protein sequence ID
-numSeqs = 10 # user prompted to enter # seqs
-
-dateY_N = "N"
-startDate = ""
-endDate = ""
-if dateY_N == "N" or "n":
-    startDate == "2000/01/01" and endDate == today.strftime("%d/%m/%Y")
-'''
 searchResultHandle = Entrez.esearch(db = "protein", term = protTerm, retmax = numSeqs, idtype = "protein", datetype = "pdat", mindate = startDate, maxdate = endDate)
 searchResult = Entrez.read(searchResultHandle)
 ids = searchResult["IdList"]
