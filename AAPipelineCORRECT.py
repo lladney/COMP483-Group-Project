@@ -10,6 +10,7 @@ import scipy.stats
 import re
 import pandas as pd
 from datetime import date
+
 today = date.today()
 
 # Define input and output files
@@ -17,6 +18,26 @@ input_file = open('proteinSearch.txt', 'w')  # open and write sequences to prote
 output_file = "/Users/laraladney/Documents/sars-cov2_amino_acid_frequencies-prot1.csv"
 output_file2 = "/Users/laraladney/Documents/aa_freqs_per_prot.csv"
 
+# Protein Sequence Retrieval from NCBI based on search term
+Entrez.email = input("Enter email: ")   # user prompted to enter email (tell NCBI who you are to access sequences)
+
+protTerm = input("Enter NCBI search term: ")     # user prompted to enter protein sequence ID
+numSeqs = input("How many protein sequences would you like to extract? ") # user prompted to enter # seqs
+
+print("Default date range for protein sequence extraction is from 01/01/2000 - Current.")
+print("Would you like to extract protein sequences from a specified date range?")
+startDate = "2000/01/01"
+endDate = today.strftime("%d/%m/%Y")
+dateY_N = ""
+while dateY_N != "N" and dateY_N != "n" and dateY_N != "Y" and dateY_N != "y":
+    dateY_N = input("Enter (Y/N): ")
+    if dateY_N != "N" and dateY_N != "n" and dateY_N != "Y" and dateY_N != "y":
+        print("Please choose yes (Y) or no (N).")
+if dateY_N == "Y" or "y" and dateY_N != "N" and dateY_N != "n":
+    startDate == input("Using format YYYY/MM/DD, enter start date: ")
+    endDate == input("Using format YYYY/MM/DD, enter end date: ")
+    
+'''
 # Protein Sequence Retrieval from NCBI based on search term
 Entrez.email = "wmccain@luc.edu"   # user prompted to enter email (tell NCBI who you are to access sequences)
 
@@ -28,7 +49,7 @@ startDate = ""
 endDate = ""
 if dateY_N == "N" or "n":
     startDate == "2000/01/01" and endDate == today.strftime("%d/%m/%Y")
-
+'''
 searchResultHandle = Entrez.esearch(db = "protein", term = protTerm, retmax = numSeqs, mindate = startDate, maxdate = endDate)
 searchResult = Entrez.read(searchResultHandle)
 ids = searchResult["IdList"]
