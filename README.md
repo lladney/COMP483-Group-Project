@@ -11,11 +11,18 @@ Built-in Python modules to import:
 - csv (reads and writes to csv files)
 - re (checks if strings match regular expressions)
 - datetime (imports current date)
+  - date
+- math (for calculations)
+  - log10
+  - floor
 
 Can be installed using pip in the command line:
 
 - numpy (mathematically alters arrays)
-- biopython (parses FASTA files and queries NCBI)
+- biopython (parses FASTA files, queries NCBI, performs protein analysis)
+  - SeqIO
+  - Entrez
+  - Bio.SeqUtils.ProtParam import ProteinAnalysis
 - matplotlib (creates 2D graphs and plots)
 - seaborn (creates statistical graphics)
 - scipy (computes statistics)
@@ -34,7 +41,7 @@ R packages to import:
 
 
 ## Inputs
-The only file needed to execute this code is **AAPipeline.py**. Once the .py file has been downloaded and the user runs the module, the user will be prompted to enter several inputs:
+The only file needed to execute this code is **AAPipeline.py**. The R code can be run after the Python code using one of the generated output files (protein.csv). Once the .py file has been downloaded and the user runs the module, the user will be prompted to enter several inputs:
 
 **a.  _Enter email:_**
 
@@ -68,6 +75,12 @@ Amino acids are displayed on a barplot with average frequencies across all queri
 **3. proteinSearch.txt**
 
 This text file contains the protein sequences obtained from NCBI using the user-specified parameters in FASTA form. 
+
+**4. protein.csv**
+
+This should be uploaded to R and used to run the code found in CorrelationMxs.R
+
+**5. test.out.csv**
 
 
 ## Test Data
