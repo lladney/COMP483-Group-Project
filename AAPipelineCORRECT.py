@@ -127,7 +127,6 @@ writer.writerow(header)
 for i in range(len(protein_ids)):
     aa_dict = amino_acids[i]
     aa_freqlist = list(aa_dict.values())
-    print(protein_ids[i], aa_freqlist)
     row = protein_ids[i] + "," + ",".join([str(x) for x in aa_freqlist])
     protein_outfile.write(row + "\n")
     writer.writerow(row)
