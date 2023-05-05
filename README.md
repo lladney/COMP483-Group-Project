@@ -82,6 +82,8 @@ This is a matrix of amino acid frequencies that should be uploaded to R and used
 
 **5. test.out.csv**
 
+
+
 The following images will be outputted once the CorrelationsMx.R code has been executed:
 
 **1. boxplots**
