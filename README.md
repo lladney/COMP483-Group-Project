@@ -3,6 +3,8 @@
 ## Functionality
 A pipeline built in Python and R to query NCBI with a user-input search information and statistically process the retrieved protein FASTA files. The pipeline provides a user interface to NCBI to pull FASTA sequences by asking the user for what they want to pull. The resulting FASTA sequences are stored in an input file, which is then used to conduct statistical analyses. Amino acid percentages are calculated individually for all FASTA sequences. Average amino acid percentages are calculated between all protein sequences and displayed in a table in an output csv file. These percentages are sorted by rank, so the user can request an amino acid at a specific rank (i.e, most frequent, or 7th most frequent amino acids). Amino acid frequencies are displayed on a barplot, with minimum and maximum frequencies displayed clearly. There is also R code to generate boxplots indicating the frequencies of amino acids and a heat map showcasing a matrix of correlations between proteins.
 
+When running the Python code, be sure to specify the desired path on your device for output_file and output_file2.
+
 
 ## Dependencies: 
 Built-in Python modules to import:
