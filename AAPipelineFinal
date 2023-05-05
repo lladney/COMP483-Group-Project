@@ -10,8 +10,8 @@ import scipy.stats
 import re
 import pandas as pd
 from datetime import date
-
 today = date.today()
+from math import log10, floor
 
 # Define input and output files
 input_file = open('proteinSearch.txt', 'w')  # open and write sequences to proteins text file 
@@ -102,9 +102,10 @@ for aa in amino_acids:
             total_aa_freqs[k] += v
         else:
             total_aa_freqs[k] = v
-
+            
+sig = int(input("How many significant figures would you like to preserve for amino acid frequencies? "))
 for k, v in total_aa_freqs.items():
-    total_aa_freqs[k] = v/int(numSeqs)
+    total_aa_freqs[k] = round((v/int(numSeqs)),sig-int(floor(log10(abs(v/int(numSeqs)))))-1)
     
 total_aa_freqs_sorted = dict(sorted(total_aa_freqs.items(), key = lambda item: item[1], reverse = True))
           
