@@ -3,7 +3,7 @@ install.packages("corrplot")
 library(corrplot)
 
 # Load the csv file using the read.csv function.
-data <- read.csv("test.out.csv")
+data <- read.csv("protein.csv")
 
 # Create a correlation matrix using the cor function.
 corr_matrix <- cor(data[,2:21])
