@@ -62,6 +62,9 @@ The user is asked to enter the number of protein sequences they would like to pu
 
 The user can either enter Y (Yes) to extract protein sequences from a specified date range, which will result in further prompting to enter a start date and end date in the form YYYY/MM/DD, or N (No) if they want to work with the default date range, where the start date is set to 2000/01/01 and the end date is set to the current date.
 
+**e.  _How many significant figures would you like to preserve for amino acid frequencies?_**
+
+The user is asked to enter the number of significant figures they would like the statistical output displayed in the form of.
 
 ## Outputs
 **_The following files will be outputted once the AAPipeline.py code has been executed:_**
