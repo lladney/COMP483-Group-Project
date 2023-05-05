@@ -14,7 +14,7 @@ Built-in Python modules to import:
 - re (checks if strings match regular expressions)
 - datetime (imports current date)
   - date
-- math (for calculations)
+- math (for calculations, rounding of significant figures)
   - log10
   - floor
 
