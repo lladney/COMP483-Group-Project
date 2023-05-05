@@ -109,10 +109,12 @@ writer = csv.writer(aa_outfile, delimiter=",")
 
 protein_outfile = open("protein.csv","w")
 
+# Creates and writes headers
 header = ["Protein ID"] + list(amino_acids[0].keys())
 protein_outfile.write(",".join(header)+'\n')
 writer.writerow(header)
 
+# Writes amino acid frequencies
 for i in range(len(protein_ids)):
     aa_dict = amino_acids[i]
     aa_freqlist = list(aa_dict.values())
