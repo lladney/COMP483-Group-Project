@@ -76,15 +76,13 @@ def write_csv(output_file, data):
             rank += 1                                   # add 1 to rank each time an amino acid is added
 
 # Extract amino acid sequences from input file
-amino_acids = extract_amino_acids(input_file)           
-
-# Close input file
-input_file.close()                     
-
+amino_acids = extract_amino_acids(input_file)           # amino acids functions as a dictionary of the amino acids and corresponding frequencies extracted from the input file
+input_file.close()                                      # close the input file
+ 
 # Calculate total frequencies of each amino acid
-total_aa_freqs = {}
-for aa in amino_acids:
-    for k, v in aa.items():
+total_aa_freqs = {}                                     # create a dictionary of amino acid frequencies
+for aa in amino_acids:                                  # for loop iterates through each amino acid in amino acid frequencies
+    for k, v in aa.items():                             
         if k in total_aa_freqs:
             total_aa_freqs[k] += v
         else:
@@ -97,8 +95,8 @@ for k, v in total_aa_freqs.items():
 total_aa_freqs_sorted = dict(sorted(total_aa_freqs.items(), key = lambda item: item[1], reverse = True))
           
 # Calculate Min/Max %'s of Frequencies
-min_percent = min(total_aa_freqs.values())
-max_percent = max(total_aa_freqs.values())
+min_percent = min(total_aa_freqs.values())             # calculate minimum frequency
+max_percent = max(total_aa_freqs.values())             # calculate maximum frequency
 
 # Write amino acid frequencies to output file
 write_csv(output_file, total_aa_freqs_sorted)
@@ -106,7 +104,7 @@ write_csv(output_file, total_aa_freqs_sorted)
 aa_outfile = open("test.out.csv", "w", newline="") # prints protein frequencies 
 writer = csv.writer(aa_outfile, delimiter=",")
 
-protein_outfile = open("protein.csv","w")
+protein_outfile = open("protein.csv","w")             # open a new outfile "protein.csv" to write amino acid frequencies for each individual protein
 
 # Creates and writes headers
 header = ["Protein ID"] + list(amino_acids[0].keys())
