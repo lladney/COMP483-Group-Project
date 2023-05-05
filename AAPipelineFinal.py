@@ -55,7 +55,7 @@ input_file = open('proteinSearch.txt', 'r')             # reopen input file but 
 protein_ids = []                                        # make a list of protein IDs
 
 # Define function to extract amino acid sequences from a FASTA file
-def extract_amino_acids(input_file):                    # function to extract amino acids from the input file
+def extract_amino_acids(input_file):                    
     amino_acids = []                                    # create a list of amino acids
     for record in SeqIO.parse(input_file, "fasta"):     # parse through each record in the input file using the SeqIO parser to detect fasta formatted sequences
         sequence = str(record.seq)                      # sequence from each record obtained
@@ -66,18 +66,17 @@ def extract_amino_acids(input_file):                    # function to extract am
     return amino_acids                                  # list of amino acid percentages returned
   
 # Define function to write amino acid frequencies and min/max percentages to a CSV file
-def write_csv(output_file, data):
-    with open(output_file, "w", newline="") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(["Rank", "Amino Acid", "Frequency"])
-        rank = 1
-        for aa, freq in data.items():
-
-            writer.writerow([rank, aa, freq])
-            rank += 1
+def write_csv(output_file, data):                     
+    with open(output_file, "w", newline="") as csvfile: # open new output file as a CSV file
+        writer = csv.writer(csvfile)                    # use writer function to write outputs to the CSV file
+        writer.writerow(["Rank", "Amino Acid", "Frequency"]) # write the header row to the CSV file
+        rank = 1                                        # initialize rank to 1
+        for aa, freq in data.items():                   # iterate through each amino acid with corresponding frequency as an item in data
+            writer.writerow([rank, aa, freq])           # write the rank and frequency corresponding to each amino acid to the output file
+            rank += 1                                   # add 1 to rank each time an amino acid is added
 
 # Extract amino acid sequences from input file
-amino_acids = extract_amino_acids(input_file)
+amino_acids = extract_amino_acids(input_file)           
 
 # Close input file
 input_file.close()                     
