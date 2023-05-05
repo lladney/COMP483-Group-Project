@@ -1,18 +1,18 @@
 # Import necessary packages
-import sys
-import csv
-import numpy as np
-from Bio import SeqIO
-from Bio import Entrez
-from Bio.SeqUtils.ProtParam import ProteinAnalysis
-import matplotlib.pyplot as plt
-import seaborn as sns
-import scipy.stats
-import re
-import pandas as pd
-from datetime import date
-today = date.today()
-from math import log10, floor
+import sys                                              # module contains methods and variables for modifying Python's runtime environment
+import csv                                              # module implements classes to read and write tabular data in csv format
+import numpy as np                                      # module for array creation and working with numerical data
+from Bio import SeqIO                                   # module functioning as an interface to input and output fasta format files
+from Bio import Entrez                                  # module to search NCBI for protein sequences with user-specified parameters
+from Bio.SeqUtils.ProtParam import ProteinAnalysis      # module for analysis of protein sequences
+import matplotlib.pyplot as plt                         # module to plot numerical data
+import seaborn as sns                                   # module for visualization and exploratory analysis, based on matplotlib
+import scipy.stats                                      # module to conduct statistical tests
+import re                                               # module for regular expression matching operations
+import pandas as pd                                     # module for building dataframes
+from math import log10, floor                           # module used to output user-specified number of significant figures in output data
+from datetime import date                               # module to pull current dates
+                                   
 
 # Define input and output files
 input_file = open('proteinSearch.txt', 'w')  # open and write sequences to proteins text file 
@@ -28,6 +28,7 @@ numSeqs = input("How many protein sequences would you like to extract? ") # user
 print("Default date range for protein sequence extraction is from 01/01/2000 - Current.")
 print("Would you like to extract protein sequences from a specified date range?")
 startDate = "2000/01/01"
+today = date.today() 
 endDate = today.strftime("%d/%m/%Y")
 dateY_N = ""
 while dateY_N != "N" and dateY_N != "n" and dateY_N != "Y" and dateY_N != "y":
