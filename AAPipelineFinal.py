@@ -51,12 +51,11 @@ input_file.write(record.rstrip('\n'))                   # each fasta format prot
 input_file.close()                                      # close the input file containing the fasta format protein sequences
 
 input_file = open('proteinSearch.txt', 'r')             # reopen input file but in read format
-
 protein_ids = []                                        # make a list of protein IDs
 
 # Define function to extract amino acid sequences from a FASTA file
 def extract_amino_acids(input_file):                    
-    amino_acids = []                                    # create a list of amino acids
+    amino_acids = []                                    # create a list of amino acids frequencies, where each item in the list is a dictitionary of the amino acid frequencies for a protein retrieved from NCBI
     for record in SeqIO.parse(input_file, "fasta"):     # parse through each record in the input file using the SeqIO parser to detect fasta formatted sequences
         sequence = str(record.seq)                      # sequence from each record obtained
         protein = ProteinAnalysis(sequence)             # protein analysis set to be performed on each individual sequence
@@ -81,18 +80,18 @@ input_file.close()                                      # close the input file
  
 # Calculate total frequencies of each amino acid
 total_aa_freqs = {}                                     # create a dictionary of amino acid frequencies
-for aa in amino_acids:                                  # for loop iterates through each amino acid in amino acid frequencies
-    for k, v in aa.items():                             
-        if k in total_aa_freqs:
+for aa in amino_acids:                                  # for loop iterates through each set of amino acid frequencies (one dictionary per protein) in the list of amino acid frequencies for the individual proteins
+    for k, v in aa.items():                             # within each dictionary, k functions as the amino acid, while v functions as its corresponding frequency                             
+        if k in total_aa_freqs:                         # for each amino acid, its corresponding frequency is added to total_aa_freqs
             total_aa_freqs[k] += v
-        else:
+        else:                                           # if the amino acid is not present in total_aa_freqs, its initial frequency is set
             total_aa_freqs[k] = v
             
-sig = int(input("How many significant figures would you like to preserve for amino acid frequencies? "))
-for k, v in total_aa_freqs.items():
-    total_aa_freqs[k] = round((v/int(numSeqs)),sig-int(floor(log10(abs(v/int(numSeqs)))))-1)
+sig = int(input("How many significant figures would you like to preserve for amino acid frequencies? ")) # user is prompted to enter number of desired significant figures in statistical outputs
+for k, v in total_aa_freqs.items():                     # for loop iterates through each amino acid and corresponding frequency in total_aa_freqs
+    total_aa_freqs[k] = round((v/int(numSeqs)),sig-int(floor(log10(abs(v/int(numSeqs)))))-1) # each frequency is rounded to the number of significant figures specified by the user
     
-total_aa_freqs_sorted = dict(sorted(total_aa_freqs.items(), key = lambda item: item[1], reverse = True))
+total_aa_freqs_sorted = dict(sorted(total_aa_freqs.items(), key = lambda item: item[1], reverse = True)) # total_aa_freqs_sorted is a sorted version of total_aa_freqs, which are the total amino acid frequencies across all proteins, sorted from most to least common
           
 # Calculate Min/Max %'s of Frequencies
 min_percent = min(total_aa_freqs.values())             # calculate minimum frequency
@@ -101,19 +100,19 @@ max_percent = max(total_aa_freqs.values())             # calculate maximum frequ
 # Write amino acid frequencies to output file
 write_csv(output_file, total_aa_freqs_sorted)
 
-aa_outfile = open("test.out.csv", "w", newline="") # prints protein frequencies 
-writer = csv.writer(aa_outfile, delimiter=",")
+aa_outfile = open("test.out.csv", "w", newline="")     # undesired output printed in test.out.csv--ignore this file output
+writer = csv.writer(aa_outfile, delimiter=",")         # writer function used to write output to both test.out.csv (ignore) and protein.csv (contains desired output)
 
-protein_outfile = open("protein.csv","w")             # open a new outfile "protein.csv" to write amino acid frequencies for each individual protein
+protein_outfile = open("protein.csv","w")              # open a new outfile "protein.csv" to write amino acid frequencies for each individual protein (tabular representation of the list of dictionaries for the amino acid frequencies in each individual protein)
 
 # Creates and writes headers
-header = ["Protein ID"] + list(amino_acids[0].keys())
-protein_outfile.write(",".join(header)+'\n')
-writer.writerow(header)
+header = ["Protein ID"] + list(amino_acids[0].keys())  # write the header, which contains the protein ID in the first column and each one-letter amino acid abbreviation in subsequent columns
+protein_outfile.write(",".join(header)+'\n')           # header formatting
+writer.writerow(header)                                # header written to the protein.csv outfile
 
 # Writes amino acid frequencies
-for i in range(len(protein_ids)):
-    aa_dict = amino_acids[i]
+for i in range(len(protein_ids)):                      # for loop iterates through each ID in the list of protein IDs
+    aa_dict = amino_acids[i]                           
     aa_freqlist = list(aa_dict.values())
     row = protein_ids[i] + "," + ",".join([str(x) for x in aa_freqlist])
     protein_outfile.write(row + "\n")
