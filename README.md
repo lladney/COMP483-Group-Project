@@ -62,7 +62,7 @@ The user can either enter Y (Yes) to extract protein sequences from a specified 
 
 
 ## Outputs
-Two files will be outputted once the AAPipeline.py code has been executed:
+The following files will be outputted once the AAPipeline.py code has been executed:
 
 **1. average_amino_acid_frequencies.csv**
 
@@ -78,9 +78,19 @@ This text file contains the protein sequences obtained from NCBI using the user-
 
 **4. protein.csv**
 
-This should be uploaded to R and used to run the code found in CorrelationMxs.R
+This is a matrix of amino acid frequencies that should be uploaded to R and used to run the code found in CorrelationMxs.R
 
 **5. test.out.csv**
+
+The following images will be outputted once the CorrelationsMx.R code has been executed:
+
+**1. boxplots**
+
+A boxplot will be created for each amino acid, showing the distribution of frequencies for each one. The boxplots can be compared to determine any significant differences in the frequency distributions.
+
+**2. heatmap**
+
+A heatmap denoting the correlations between proteins will be created.
 
 
 ## Test Data
