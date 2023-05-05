@@ -84,6 +84,3 @@ __Default date range for protein sequence extraction is from 01/01/2000 -- Curre
 __Would you like to extract protein sequences from a specified date range?__
 __Enter (Y/N):__ N
 
-Useful Links:
-- List of Omicron variants: https://covariants.org/variants/21L.Omicron
-- Removing invalid sequences from FASTA files: https://protfasta.readthedocs.io/en/latest/read_fasta.html
