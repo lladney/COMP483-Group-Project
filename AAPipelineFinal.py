@@ -50,7 +50,7 @@ endDate = ""
 if dateY_N == "N" or "n":
     startDate == "2000/01/01" and endDate == today.strftime("%d/%m/%Y")
 '''
-searchResultHandle = Entrez.esearch(db = "protein", term = protTerm, retmax = numSeqs, mindate = startDate, maxdate = endDate)
+searchResultHandle = Entrez.esearch(db = "protein", term = protTerm, retmax = numSeqs, datetype = "pdat", mindate = startDate, maxdate = endDate)
 searchResult = Entrez.read(searchResultHandle)
 ids = searchResult["IdList"]
 
