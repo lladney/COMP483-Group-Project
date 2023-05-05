@@ -76,7 +76,7 @@ def write_csv(output_file, data):
             rank += 1                                   # add 1 to rank each time an amino acid is added
 
 # Extract amino acid sequences from input file
-amino_acids = extract_amino_acids(input_file)           # amino acids functions as a dictionary of the amino acids and corresponding frequencies extracted from the input file
+amino_acids = extract_amino_acids(input_file)           # amino acids functions as a list of dictionaries of the amino acids and corresponding frequencies for each protein (each protein has its own dictionary of amino acid frequencies)
 input_file.close()                                      # close the input file
  
 # Calculate total frequencies of each amino acid
