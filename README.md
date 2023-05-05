@@ -62,7 +62,7 @@ The user can either enter Y (Yes) to extract protein sequences from a specified 
 
 
 ## Outputs
-The following files will be outputted once the AAPipeline.py code has been executed:
+**_The following files will be outputted once the AAPipeline.py code has been executed:_**
 
 **1. average_amino_acid_frequencies.csv**
 
@@ -84,7 +84,7 @@ This is a matrix of amino acid frequencies that should be uploaded to R and used
 
 
 
-The following images will be outputted once the CorrelationsMx.R code has been executed:
+**_The following images will be outputted once the CorrelationsMx.R code has been executed:_**
 
 **1. boxplots**
 
